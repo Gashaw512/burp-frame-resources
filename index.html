@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Project Resources - Central hub for links and documentation" />
+  <title>Project Resources</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0d1117;
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      background: linear-gradient(135deg, #0070f3, #00c6ff);
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.9);
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      gap: 1rem;
+    }
+    .link-card {
+      background: #161b22;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      width: 250px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .link-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+    .link-card i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #00c6ff;
+    }
+    .link-card a {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #00c6ff;
+      text-decoration: none;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      padding-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1 id="project-title">Burp-Frame</h1>
+    <p id="project-tagline">Your One-Shot Pen Testing Toolkit for Android</p>
+  </header>
+
+  <!-- LINKS -->
+  <section class="links" id="links-container">
+    <!-- Links will be injected here by JS -->
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year"></span> <span id="owner">Gashaw Kidanu</span> — All Rights Reserved.
+  </footer>
+
+  <script>
+    // CONFIG — Update this per project
+    const config = {
+      title: "Burp-Frame",
+      tagline: "Your One-Shot Pen Testing Toolkit for Android",
+      owner: "Gashaw Kidanu",
+      links: [
+        { name: "GitHub", icon: "fab fa-github", url: "https://github.com/Gashaw512/burp-frame" },
+        { name: "PyPI", icon: "fab fa-python", url: "https://pypi.org/project/burp-frame/" },
+        { name: "Documentation", icon: "fas fa-book", url: "https://burp-frame.readthedocs.io/en/latest/" },
+        { name: "Medium Article", icon: "fab fa-medium", url: "https://medium.com/@kidanugashaw/unlock-android-security-introducing-burp-frame-your-one-shot-pen-testing-toolkit-8b093a73eb67" }
+      ]
+    };
+
+    // Set header
+    document.getElementById("project-title").textContent = config.title;
+    document.getElementById("project-tagline").textContent = config.tagline;
+    document.getElementById("owner").textContent = config.owner;
+
+    // Generate links
+    const linksContainer = document.getElementById("links-container");
+    config.links.forEach(link => {
+      const card = document.createElement("div");
+      card.className = "link-card";
+      card.innerHTML = `<i class="${link.icon}"></i>
+                        <div>${link.name}</div>
+                        <a href="${link.url}" target="_blank">Visit</a>`;
+      linksContainer.appendChild(card);
+    });
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
